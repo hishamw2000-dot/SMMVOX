@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMM VIIP - خدمات SMM</title>
+<title>{{ site["site_name"] }} - خدمات SMM</title>
 
 <style>
 *{
@@ -422,7 +422,7 @@ padding: 15px;
 </div>
 
 <div class="hero">
-<h1>SMM VIIP</h1>
+<h1>{{ site["site_name"] }}</h1>
 <h2>خدمات SMM لزيادة المتابعين والمشاهدات بأسعار تنافسية</h2>
 <p>نسعى دائماً لتقديم أفضل الخدمات. سر النجاح الرقمي يبدأ بخطوة بسيطة وموثوقة.</p>
 
@@ -436,13 +436,15 @@ padding: 15px;
 <!-- نموذج تسجيل الدخول -->
 <div class="form-box">
     <form method="post" action="https://smmviip.com">
-        <input type="text" name="username" placeholder="اسم المستخدم" required>
+        <input type="text" name="username" placeholder="{{ lang['signin.username'] }}" value="{{ data['username'] }}" required>
         
-        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <input type="password" name="password" placeholder="{{ lang['signin.password'] }}" required>
         
-        <div class="forgot-password">
-            <a href="https://smmviip.com/resetpassword">هل نسيت كلمة المرور؟</a>
-        </div>
+        {% if resetPage %}
+            <div class="forgot-password">
+                <a href="https://smmviip.com/resetpassword">{{ lang['signin.password.lost'] }}؟</a>
+            </div>
+        {% endif %}
 
         {% if captcha %}
             <div style="margin-bottom: 15px; text-align: center;">
@@ -450,11 +452,13 @@ padding: 15px;
             </div>
         {% endif %}
 
-        <button type="submit" class="btn">تسجيل الدخول</button>
+        <button type="submit" class="btn">{{ lang['signin.button'] }}</button>
         
-        <div class="signup-redirect-text">
-            ليس لديك حساب؟ <a href="https://smmviip.com/signup">سجل الآن</a>
-        </div>
+        {% if Signup %}
+            <div class="signup-redirect-text">
+                ليس لديك حساب؟ <a href="https://smmviip.com/signup">سجل الآن</a>
+            </div>
+        {% endif %}
         
         {% if google_login_content %}
             <div class="google-login-box">
@@ -476,7 +480,7 @@ padding: 15px;
 <div class="card">
 <div class="icon">✓</div>
 <h3>طلبات الموقع</h3>
-<p>أكثر من 500K+ طلب تم تنفيذه بنجاح وبأعلى سرعة.</p>
+<p>{{ totalorders }} طلب تم تنفيذه بنجاح وبأعلى سرعة.</p>
 </div>
 
 <div class="card">
@@ -487,10 +491,10 @@ padding: 15px;
 
 </div>
 
-<h2 class="section-title">لماذا تختار SMM VIIP؟</h2>
+<h2 class="section-title">لماذا تختار {{ site["site_name"] }}؟</h2>
 <div class="card" style="margin-bottom: 30px;">
     <p style="font-size: 15px; color: #e2e8f0; line-height: 1.8;">
-        في SMM VIIP، نضع خدمة العملاء الاستثنائية والسرعة الفائقة كأولوية قصوى. 
+        في {{ site["site_name"] }}، نضع خدمة العملاء الاستثنائية والسرعة الفائقة كأولوية قصوى. 
         عند تعاملك معنا، <span style="color: #ff9f1a; font-weight: bold;">ستحصل على حماية وأمان بنسبة 100%</span> 
         مع الاستفادة من أرخص وأسرع لوحة SMM متوفرة على الإنترنت.
     </p>
